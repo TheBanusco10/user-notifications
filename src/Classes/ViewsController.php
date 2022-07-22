@@ -1,0 +1,19 @@
+<?php
+
+namespace UserNotifications\Classes;
+
+class ViewsController {
+	public static function userNotifications_adminPageView() {
+		include PLUGIN_PATH . "Views/dashboard.php";
+	}
+
+	public static function userNotifications_registerAdminScripts() {
+		$screen = get_current_screen();
+
+		if ( $screen->id === UserNotifications::DASHBOARD_PAGE_ID ) {
+			wp_enqueue_style( 'un-dashboard-css', PLUGIN_URL . 'Assets/css/dashboard.css' );
+
+			wp_enqueue_script( 'un-dashboard-js', PLUGIN_URL . 'Assets/js/dashboard.js', [ 'jquery' ], '1.0.0', true );
+		}
+	}
+}

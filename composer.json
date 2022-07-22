@@ -1,0 +1,18 @@
+{
+    "name": "david/user-notifications",
+    "description": "Send global notifications to the website's users",
+    "type": "wordpress-plugin",
+    "license": "GPL v3",
+    "autoload": {
+        "psr-4": {
+            "UserNotifications\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "David",
+            "email": "davidjimvil@gmail.com"
+        }
+    ],
+    "require": {}
+}

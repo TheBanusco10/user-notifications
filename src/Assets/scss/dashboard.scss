@@ -1,0 +1,26 @@
+@import "utils/variables";
+
+.un__dashboard {
+  .un__users {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+
+    .un__user {
+      background: white;
+      padding: 10px;
+      border-radius: 4px;
+      border: 2px solid transparent;
+      transition: all .3s;
+
+      &:hover {
+        cursor: pointer;
+        border: 2px solid $un--secondary__color;
+      }
+
+      &.active {
+        border: 2px solid $un--secondary__color;
+      }
+    }
+  }
+}

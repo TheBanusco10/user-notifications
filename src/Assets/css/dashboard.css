@@ -1,0 +1,21 @@
+.un__dashboard .un__users {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+.un__dashboard .un__users .un__user {
+  background: white;
+  padding: 10px;
+  border-radius: 4px;
+  border: 2px solid transparent;
+  transition: all 0.3s;
+}
+.un__dashboard .un__users .un__user:hover {
+  cursor: pointer;
+  border: 2px solid #9AD4D6;
+}
+.un__dashboard .un__users .un__user.active {
+  border: 2px solid #9AD4D6;
+}
+
+/*# sourceMappingURL=dashboard.css.map */
