@@ -1,25 +1,30 @@
 (function ($) {
     
     let usersContainer = $('.un__dashboard .un__users .un__user');
-    
-    // Buttons
-    let selectAllUsers = $('.un__dashboard .un__users-selected-container button[data-button="un__select-all-users"]');
+
+    let selectAllUsersButton = $('.un__dashboard .un__users-selected-container button[data-button="un__select-all-users"]');
     let isSelectAllUsers = false;
+
+    let sendNotificationButton = $('.unbutton');
+
+    sendNotificationButton.on('click', function () {
+        console.log('From dashboard');
+    });
 
     usersContainer.on('click', function () {
        $(this).toggleClass('active');
        getAndPrintNumUsersSelected();
     });
 
-    selectAllUsers.on('click', function () {
+    selectAllUsersButton.on('click', function () {
         isSelectAllUsers = !isSelectAllUsers;
 
         if (isSelectAllUsers) {
             usersContainer.addClass('active');
-            selectAllUsers.text('Deselect all');
+            selectAllUsersButton.text('Deselect all');
         } else {
             usersContainer.removeClass('active');
-            selectAllUsers.text('Select all');
+            selectAllUsersButton.text('Select all');
         }
 
         getAndPrintNumUsersSelected();

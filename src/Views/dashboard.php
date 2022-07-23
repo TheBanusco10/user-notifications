@@ -4,6 +4,10 @@ $users = get_users( [
 	'exclude' => [ get_current_user_id() ]
 ] );
 
+$notification = get_option('notification');
+
+var_dump($notification);
+
 //var_dump($users);
 
 ?>
@@ -18,7 +22,7 @@ $users = get_users( [
 
     <section class="un__users">
         <?php foreach ($users as $user): ?>
-            <div class="un__user">
+            <div class="un__user" data-id="<?= $user->ID ?>">
                 <p class="un__name">
                     <?= $user->display_name ?>
                 </p>
@@ -28,5 +32,8 @@ $users = get_users( [
             </div>
         <?php endforeach; ?>
     </section>
+
+    <button data-button="un__sendNotification">Send notification</button>
 </div>
+
 
