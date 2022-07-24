@@ -7,10 +7,6 @@
 
     let sendNotificationButton = $('.unbutton');
 
-    sendNotificationButton.on('click', function () {
-        console.log('From dashboard');
-    });
-
     usersContainer.on('click', function () {
        $(this).toggleClass('active');
        getAndPrintNumUsersSelected();
