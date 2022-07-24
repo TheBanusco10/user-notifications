@@ -10,6 +10,7 @@ class UserNotifications {
 
 	public static function init() {
 		add_action("init", function () {
+			NotificationCPT::init();
 			Notifications::userNotifications_actionAjaxEvents();
 		});
 		add_action("admin_menu", function () {
