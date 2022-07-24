@@ -7,6 +7,10 @@ class ViewsController {
 		include PLUGIN_PATH . "Views/dashboard.php";
 	}
 
+	public static function userNotifications_notificationsPageView() {
+		include PLUGIN_PATH . "Views/notifications.php";
+	}
+
 	public static function userNotifications_registerAdminScripts() {
 		$screen = get_current_screen();
 
