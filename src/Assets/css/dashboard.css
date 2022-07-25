@@ -1,3 +1,21 @@
+.un__dashboard #un__notification-content div {
+  width: 100%;
+  margin-bottom: 2rem;
+}
+.un__dashboard #un__notification-content div label, .un__dashboard #un__notification-content div input, .un__dashboard #un__notification-content div textarea {
+  display: block;
+}
+.un__dashboard #un__notification-content div label {
+  margin-bottom: 1rem;
+  font-size: 25px;
+}
+.un__dashboard #un__notification-content div input, .un__dashboard #un__notification-content div textarea {
+  width: 400px;
+}
+.un__dashboard #un__notification-content div textarea {
+  min-height: 100px;
+  max-height: 250px;
+}
 .un__dashboard .un__users {
   display: flex;
   flex-wrap: wrap;
