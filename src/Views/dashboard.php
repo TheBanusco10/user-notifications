@@ -8,6 +8,8 @@ $users = get_users( [
 
 <div class="un__dashboard">
 
+    <div id="un__alert"></div>
+
     <section id="un__notification-content">
         <div>
             <label for="un__notification-title">Title</label>
@@ -42,6 +44,7 @@ $users = get_users( [
 
 
     <button class="button button-disabled" data-button="un__sendNotification">Send notification</button>
+    <div class="spinner">
 </div>
 
 

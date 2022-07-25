@@ -25,8 +25,8 @@ $notifications = new WP_Query( [
             </p>
         <?php endwhile; wp_reset_postdata(); ?>
     <?php else: ?>
-    <p>
-        <?php __( 'There is no notifications yet.', 'un' ); ?>
-    </p>
+        <p>
+            <?php _e( 'There is no notifications for you', 'un' ); ?>
+        </p>
 	<?php endif; ?>
 </section>

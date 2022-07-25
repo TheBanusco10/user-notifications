@@ -18,38 +18,30 @@ class Notifications {
 	}
 
 	private function userNotifications_sendNotification() {
+		header('Content-type: application/json');
+
 		$newNotification = $_POST['notification'] ?? null;
 		$users =  $_POST['users'] ?? null;
 
 		if ($newNotification && $users) {
 
-//			$notifications = get_option(self::OPTION_ID);
-//
-//			$notifications[] = [
-//				'notification' => $newNotification,
-//				'users' => $users
-//			];
-//
-//			update_option(self::OPTION_ID, $notifications);
-
 			$postID = wp_insert_post( [
-				'post_title'   => 'New notification',
-				'post_content' => $newNotification,
+				'post_title'   => $newNotification['title'],
+				'post_content' => $newNotification['description'],
 				'post_status'  => 'publish',
 				'post_type'    => NotificationCPT::POST_TYPE
 			] );
 
 			update_post_meta($postID, 'users', $users);
 
-
 			wp_send_json( [
-				'result' => 'Notification sent'
+				'result' => __('Notification sent successfully', 'un')
 			], 200 );
 		}
 
 		wp_send_json( [
-			'result' => 'Something was wrong'
-		], 500 );
+			'result' => __('Something was wrong', 'un')
+		], 400 );
 
 	}
 

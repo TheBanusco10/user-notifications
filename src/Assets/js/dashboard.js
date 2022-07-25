@@ -10,7 +10,7 @@
     let notificationTitle = $('#un__notification-title');
     let notificationContent = $('#un__notification-description');
 
-    let inputs = $('input, textarea, .un__user');
+    let inputs = $('input, textarea, .un__user, button[data-button="un__select-all-users"]');
 
     usersContainer.on('click', function () {
        $(this).toggleClass('active');
