@@ -2,6 +2,8 @@
 
 namespace UserNotifications\Ajax;
 
+use UserNotifications\Classes\NotificationCPT;
+
 class Notifications {
 
 	const OPTION_ID = 'un_notifications';
@@ -21,14 +23,24 @@ class Notifications {
 
 		if ($newNotification && $users) {
 
-			$notifications = get_option(self::OPTION_ID);
+//			$notifications = get_option(self::OPTION_ID);
+//
+//			$notifications[] = [
+//				'notification' => $newNotification,
+//				'users' => $users
+//			];
+//
+//			update_option(self::OPTION_ID, $notifications);
 
-			$notifications[] = [
-				'notification' => $newNotification,
-				'users' => $users
-			];
+			$postID = wp_insert_post( [
+				'post_title'   => 'New notification',
+				'post_content' => $newNotification,
+				'post_status'  => 'publish',
+				'post_type'    => NotificationCPT::POST_TYPE
+			] );
 
-			update_option(self::OPTION_ID, $notifications);
+			update_post_meta($postID, 'users', $users);
+
 
 			wp_send_json( [
 				'result' => 'Notification sent'

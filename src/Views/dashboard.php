@@ -1,14 +1,25 @@
 <?php
 
+use UserNotifications\Classes\NotificationCPT;
+
 $users = get_users( [
 	'exclude' => [ get_current_user_id() ]
 ] );
 
-$notification = get_option('notification');
+//$notification = get_option('notification');
+$notifications = new WP_Query( [
+	'post_type'  => NotificationCPT::POST_TYPE,
+	'meta_query' => [
+        [
+	        'key'     => 'users',
+	        'value'   => '3',
+	        'compare' => 'LIKE'
+        ]
+	]
+] );
 
-var_dump($notification);
-
-//var_dump($users);
+var_dump($notifications->get_posts());
+var_dump(get_post_meta($notifications->get_posts()[0]->ID, 'users', true));
 
 ?>
 
