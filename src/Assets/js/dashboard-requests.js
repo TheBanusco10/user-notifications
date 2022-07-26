@@ -35,7 +35,7 @@
         }).fail( err => {
             userNotifications_setAlert($, err.responseJSON.result, 'error');
         }).always( () => {
-            spinner.toggleClass('hidden');
+            spinner.toggleClass('is-active');
             sendNotificationButton.removeClass('button-disabled');
         });
 
