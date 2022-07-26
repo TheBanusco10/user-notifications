@@ -1,7 +1,42 @@
+.active {
+  display: block;
+}
+
+.hidden {
+  display: none;
+}
+
+#un__alert .notice {
+  margin: 2rem 1rem 2rem 0;
+  padding: 20px;
+}
+
+.un__dashboard .spinner {
+  float: none;
+}
+.un__dashboard #un__notification-content div {
+  width: 100%;
+  margin-bottom: 2rem;
+}
+.un__dashboard #un__notification-content div label, .un__dashboard #un__notification-content div input, .un__dashboard #un__notification-content div textarea {
+  display: block;
+}
+.un__dashboard #un__notification-content div label {
+  margin-bottom: 1rem;
+  font-size: 25px;
+}
+.un__dashboard #un__notification-content div input, .un__dashboard #un__notification-content div textarea {
+  width: 400px;
+}
+.un__dashboard #un__notification-content div textarea {
+  min-height: 100px;
+  max-height: 250px;
+}
 .un__dashboard .un__users {
   display: flex;
   flex-wrap: wrap;
   gap: 1rem;
+  margin-bottom: 2rem;
 }
 .un__dashboard .un__users .un__user {
   background: white;

@@ -18,6 +18,7 @@ class ViewsController {
 			wp_enqueue_style( 'un-dashboard-css', PLUGIN_URL . 'Assets/css/dashboard.css' );
 
 			wp_enqueue_script( 'un-dashboard-js', PLUGIN_URL . 'Assets/js/dashboard.js', [ 'jquery' ], '1.0.0', true );
+			wp_enqueue_script( 'un-globals-js', PLUGIN_URL . 'Assets/js/globals.js', [ 'jquery' ], '1.0.0', true );
 		}
 	}
 }
