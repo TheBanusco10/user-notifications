@@ -6,8 +6,6 @@ use UserNotifications\Classes\NotificationCPT;
 
 class Notifications {
 
-	const OPTION_ID = 'un_notifications';
-
 	public static function userNotifications_registerAjaxScripts() {
 		wp_enqueue_script( 'dashboard-ajax', PLUGIN_URL . 'Assets/js/dashboard-requests.js', [ 'jquery' ], false, true );
 
@@ -26,8 +24,8 @@ class Notifications {
 		if ($newNotification && $users) {
 
 			$postID = wp_insert_post( [
-				'post_title'   => $newNotification['title'],
-				'post_content' => $newNotification['description'],
+				'post_title'   => sanitize_text_field($newNotification['title']),
+				'post_content' => sanitize_text_field($newNotification['description']),
 				'post_status'  => 'publish',
 				'post_type'    => NotificationCPT::POST_TYPE
 			] );

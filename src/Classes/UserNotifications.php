@@ -7,6 +7,7 @@ use UserNotifications\Ajax\Notifications;
 class UserNotifications {
 
 	const DASHBOARD_PAGE_ID = 'toplevel_page_dashboard-user-notifications';
+	const NOTIFICATIONS_PAGE_ID = 'toplevel_page_notifications-user-notifications';
 
 	public static function init() {
 		add_action("init", function () {

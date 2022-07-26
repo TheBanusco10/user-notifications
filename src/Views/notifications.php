@@ -13,6 +13,12 @@ $notifications = new WP_Query( [
 	]
 ] );
 
+if ( current_user_can('manage_options') ) {
+	$notifications = new WP_Query( [
+		'post_type'  => NotificationCPT::POST_TYPE,
+	] );
+}
+
 ?>
 
 <h1>Notifications</h1>
@@ -20,9 +26,14 @@ $notifications = new WP_Query( [
 <section id="un__notifications">
 	<?php if ( $notifications->have_posts() ): ?>
 		<?php while ( $notifications->have_posts() ): $notifications->the_post(); ?>
-            <p>
-                <?= get_the_title(); ?>
-            </p>
+            <div class="card">
+                <p class="un__card-title">
+		            <?= sanitize_text_field(get_the_title()); ?>
+                </p>
+                <p class="un__card-description">
+                    <?= sanitize_text_field(get_the_content()); ?>
+                </p>
+            </div>
         <?php endwhile; wp_reset_postdata(); ?>
     <?php else: ?>
         <p>

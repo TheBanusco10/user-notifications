@@ -7,14 +7,11 @@
 
     let sendNotificationButton = $('button[data-button="un__sendNotification"]');
 
-    let notificationTitle = $('#un__notification-title');
-    let notificationContent = $('#un__notification-description');
-
     let inputs = $('input, textarea, .un__user, button[data-button="un__select-all-users"]');
 
     usersContainer.on('click', function () {
        $(this).toggleClass('active');
-       printNumUsersSelected();
+       userNotifications_printNumUsersSelected($);
     });
 
     selectAllUsersButton.on('click', function () {
@@ -28,30 +25,12 @@
             selectAllUsersButton.text('Select all');
         }
 
-        printNumUsersSelected();
+        userNotifications_printNumUsersSelected($);
     });
 
     inputs.on('click focusout keydown keyup', function () {
-        if (isValidToSend()) sendNotificationButton.removeClass('button-disabled');
+        if (userNotifications_isValidToSend($)) sendNotificationButton.removeClass('button-disabled');
         else sendNotificationButton.addClass('button-disabled');
     });
-
-    /**
-     * Update number of selected users
-     */
-    function printNumUsersSelected() {
-        $('.un__dashboard .un__users-selected').text(getNumUsersSelected().length);
-    }
-
-    function getNumUsersSelected() {
-        return $('.un__dashboard .un__users .un__user.active');
-    }
-
-    /**
-     * Check if all inputs are filled (Input, Textarea and NumUserSelected)
-     */
-    function isValidToSend() {
-        return notificationTitle.val().length > 0 && notificationContent.val().length > 0 && getNumUsersSelected().length > 0;
-    }
 
 })(jQuery);

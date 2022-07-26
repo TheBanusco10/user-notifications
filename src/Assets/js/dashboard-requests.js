@@ -3,7 +3,13 @@
     let sendNotificationButton = $('.un__dashboard button[data-button="un__sendNotification"]');
     let spinner = $('.spinner');
 
+    let notificationTitle = $('#un__notification-title');
+    let notificationContent = $('#un__notification-description');
+    let users = $('.un__dashboard .un__users .un__user');
+
     sendNotificationButton.on('click', function () {
+
+        if ( !userNotifications_isValidToSend($) ) return;
 
         let usersSelected = $('.un__dashboard .un__users .un__user.active');
         let userIdSelected = [];
@@ -36,9 +42,20 @@
             userNotifications_setAlert($, err.responseJSON.result, 'error');
         }).always( () => {
             spinner.toggleClass('is-active');
-            sendNotificationButton.removeClass('button-disabled');
+            sendNotificationButton.addClass('button-disabled');
+            emptyFields();
         });
 
     });
+
+    /**
+     * Empty all the fields: Title, Description, Users selected
+     */
+    function emptyFields() {
+        notificationTitle.val('');
+        notificationContent.val('');
+        users.removeClass('active');
+        userNotifications_printNumUsersSelected($);
+    }
 
 })(jQuery);
