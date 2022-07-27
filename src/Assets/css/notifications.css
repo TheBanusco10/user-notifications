@@ -1,0 +1,15 @@
+#un__notifications {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+#un__notifications .card {
+  border-radius: 3px;
+  max-width: 17.5rem;
+}
+#un__notifications .card .un__card-title {
+  font-size: 20px;
+  font-weight: bold;
+}
+
+/*# sourceMappingURL=notifications.css.map */

@@ -11,8 +11,25 @@ class Notifications {
 
 		wp_localize_script( 'dashboard-ajax', 'ajax_wordpress', [
 			'url'    => admin_url( 'admin-ajax.php' ),
-			'action' => 'userNotifications_sendNotification'
+			'action' => 'userNotifications_sendNotification',
+			'action_removeNotification' => 'userNotifications_removeNotification'
 		] );
+	}
+
+	public static function userNotifications_actionAjaxEvents() {
+		add_action( 'wp_ajax_nopriv_userNotifications_sendNotification', function () {
+			self::userNotifications_sendNotification();
+		} );
+		add_action( 'wp_ajax_userNotifications_sendNotification', function () {
+			self::userNotifications_sendNotification();
+		} );
+
+		add_action( 'wp_ajax_nopriv_userNotifications_removeNotification', function () {
+			self::userNotifications_removeNotification();
+		} );
+		add_action( 'wp_ajax_userNotifications_removeNotification', function () {
+			self::userNotifications_removeNotification();
+		} );
 	}
 
 	private function userNotifications_sendNotification() {
@@ -43,13 +60,20 @@ class Notifications {
 
 	}
 
-	public static function userNotifications_actionAjaxEvents() {
-		add_action( 'wp_ajax_nopriv_userNotifications_sendNotification', function () {
-			self::userNotifications_sendNotification();
-		} );
-		add_action( 'wp_ajax_userNotifications_sendNotification', function () {
-			self::userNotifications_sendNotification();
-		} );
-	}
+	private function userNotifications_removeNotification() {
+		$notification_id = $_POST['notification_id'] ?? null;
 
+		if ( $notification_id ) {
+			wp_delete_post( $notification_id, true );
+
+			wp_send_json([
+				'result' => __('Notification removed', 'un')
+			], 200);
+		}else {
+			wp_send_json([
+				'result' => __('Something was wrong', 'un')
+			], 400);
+		}
+
+	}
 }

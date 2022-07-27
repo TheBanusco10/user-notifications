@@ -1,5 +1,6 @@
 (function ($) {
 
+    // Dashboard Views
     let sendNotificationButton = $('.un__dashboard button[data-button="un__sendNotification"]');
     let spinner = $('.spinner');
 
@@ -28,7 +29,6 @@
             type: 'POST',
             url: ajax_wordpress.url,
             data: {
-                contentType: 'application/json',
                 action: ajax_wordpress.action,
                 notification: {
                     title: notificationTitle.val(),
@@ -46,6 +46,27 @@
             emptyFields();
         });
 
+    });
+
+    // Notifications Views
+    let removeNotificationButtons = $('.un__card-actions button[data-button="un__removeNotification"]');
+
+    removeNotificationButtons.each(function () {
+        $(this).on('click', function () {
+            console.log($(this).data('notificationid'));
+            // $.ajax({
+            //     method: 'POST',
+            //     url: ajax_wordpress.url,
+            //     data: {
+            //         action: ajax_wordpress.action_removeNotification,
+            //         notification_id: 2
+            //     }
+            // }).done( res => {
+            //     userNotifications_setAlert($, res.result);
+            // }).fail( err => {
+            //     userNotifications_setAlert($, err.responseJSON.result, 'error');
+            // });
+        });
     });
 
     /**
