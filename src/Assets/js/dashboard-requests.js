@@ -1,6 +1,6 @@
 (function ($) {
 
-    // Dashboard Views
+    // Dashboard View
     let sendNotificationButton = $('.un__dashboard button[data-button="un__sendNotification"]');
     let spinner = $('.spinner');
 
@@ -48,24 +48,31 @@
 
     });
 
-    // Notifications Views
+    // Notifications View
     let removeNotificationButtons = $('.un__card-actions button[data-button="un__removeNotification"]');
 
     removeNotificationButtons.each(function () {
         $(this).on('click', function () {
-            console.log($(this).data('notificationid'));
-            // $.ajax({
-            //     method: 'POST',
-            //     url: ajax_wordpress.url,
-            //     data: {
-            //         action: ajax_wordpress.action_removeNotification,
-            //         notification_id: 2
-            //     }
-            // }).done( res => {
-            //     userNotifications_setAlert($, res.result);
-            // }).fail( err => {
-            //     userNotifications_setAlert($, err.responseJSON.result, 'error');
-            // });
+            let notificationID = $(this).data('notificationid');
+            let cardElement = $(this).closest('.card').remove();
+
+            alternateDisableButtons(removeNotificationButtons);
+
+            $.ajax({
+                method: 'POST',
+                url: ajax_wordpress.url,
+                data: {
+                    action: ajax_wordpress.action_removeNotification,
+                    notification_id: notificationID
+                }
+            }).done( res => {
+                userNotifications_setAlert($, res.result);
+                cardElement.remove();
+            }).fail( err => {
+                userNotifications_setAlert($, err.responseJSON.result, 'error');
+            }).always( () => {
+               alternateDisableButtons(removeNotificationButtons, false);
+            });
         });
     });
 
@@ -77,6 +84,27 @@
         notificationContent.val('');
         users.removeClass('active');
         userNotifications_printNumUsersSelected($);
+    }
+
+    /**
+     * Alternate the disabled attribute in buttons
+     * @param buttons
+     * @param isDisabled
+     */
+    function alternateDisableButtons(buttons, isDisabled = true) {
+        let spinner = $('.spinner');
+
+        if (isDisabled) {
+            $(buttons).addClass('button-disabled');
+            $(buttons).attr('disabled', isDisabled);
+        }
+        else {
+            $(buttons).removeClass('button-disabled');
+            $(buttons).attr('disabled', isDisabled);
+        }
+
+        if (spinner)
+            spinner.toggleClass('is-active');
     }
 
 })(jQuery);

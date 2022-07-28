@@ -17,6 +17,7 @@ class UserNotifications {
 		add_action("admin_menu", function () {
 			self::userNotifications_registerAdminPage();
 			self::userNotifications_registerNotificationsPage();
+			NotificationController::init();
 		});
 		add_action("admin_enqueue_scripts", function () {
 			ViewsController::userNotifications_registerAdminScripts();

@@ -3,6 +3,7 @@
 namespace UserNotifications\Ajax;
 
 use UserNotifications\Classes\NotificationCPT;
+use UserNotifications\Classes\UserNotifications;
 
 class Notifications {
 
@@ -10,8 +11,8 @@ class Notifications {
 		wp_enqueue_script( 'dashboard-ajax', PLUGIN_URL . 'Assets/js/dashboard-requests.js', [ 'jquery' ], false, true );
 
 		wp_localize_script( 'dashboard-ajax', 'ajax_wordpress', [
-			'url'    => admin_url( 'admin-ajax.php' ),
-			'action' => 'userNotifications_sendNotification',
+			'url'                       => admin_url( 'admin-ajax.php' ),
+			'action'                    => 'userNotifications_sendNotification',
 			'action_removeNotification' => 'userNotifications_removeNotification'
 		] );
 	}
@@ -33,29 +34,33 @@ class Notifications {
 	}
 
 	private function userNotifications_sendNotification() {
-		header('Content-type: application/json');
+		header( 'Content-type: application/json' );
 
 		$newNotification = $_POST['notification'] ?? null;
-		$users =  $_POST['users'] ?? null;
+		$users           = $_POST['users'] ?? null;
 
-		if ($newNotification && $users) {
+		if ( $newNotification && $users ) {
 
 			$postID = wp_insert_post( [
-				'post_title'   => sanitize_text_field($newNotification['title']),
-				'post_content' => sanitize_text_field($newNotification['description']),
+				'post_title'   => sanitize_text_field( $newNotification['title'] ),
+				'post_content' => sanitize_text_field( $newNotification['description'] ),
 				'post_status'  => 'publish',
 				'post_type'    => NotificationCPT::POST_TYPE
 			] );
 
-			update_post_meta($postID, 'users', $users);
+			update_post_meta( $postID, 'users', $users );
+
+			foreach ( $users as $user ) {
+				update_user_meta( intval( $user ), 'un_hasNotification', true );
+			}
 
 			wp_send_json( [
-				'result' => __('Notification sent successfully', 'un')
+				'result' => __( 'Notification sent successfully', 'un' )
 			], 200 );
 		}
 
 		wp_send_json( [
-			'result' => __('Something was wrong', 'un')
+			'result' => __( 'Something was wrong', 'un' )
 		], 400 );
 
 	}
@@ -66,13 +71,13 @@ class Notifications {
 		if ( $notification_id ) {
 			wp_delete_post( $notification_id, true );
 
-			wp_send_json([
-				'result' => __('Notification removed', 'un')
-			], 200);
-		}else {
-			wp_send_json([
-				'result' => __('Something was wrong', 'un')
-			], 400);
+			wp_send_json( [
+				'result' => __( 'Notification removed', 'un' )
+			], 200 );
+		} else {
+			wp_send_json( [
+				'result' => __( 'Something was wrong', 'un' )
+			], 400 );
 		}
 
 	}

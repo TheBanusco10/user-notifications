@@ -1,14 +1,16 @@
 <?php
+
 $users = get_users( [
 	'exclude' => [ get_current_user_id() ]
 ] );
+
 ?>
 
 <h1>User Notifications - Dashboard</h1>
 
 <div class="un__dashboard">
 
-    <div id="un__alert"></div>
+	<?php include PLUGIN_VIEWS_PATH . 'partials/alert.php' ?>
 
     <section id="un__notification-content">
         <div>
@@ -44,7 +46,7 @@ $users = get_users( [
 
 
     <button class="button button-disabled" data-button="un__sendNotification">Send notification</button>
-    <div class="spinner">
+    <div class="spinner"></div>
 </div>
 
 

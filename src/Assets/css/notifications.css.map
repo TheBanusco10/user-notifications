@@ -1,1 +1,1 @@
-{"version":3,"sourceRoot":"","sources":["../scss/notifications.scss"],"names":[],"mappings":"AAAA;EACE;EACA;EACA;;AAEA;EACE;EACA;;AAEA;EACE;EACA","file":"notifications.css"}
+{"version":3,"sourceRoot":"","sources":["../scss/utils/_globals.scss","../scss/notifications.scss"],"names":[],"mappings":"AAAA;EACE;EACA;;;ACAF;EACE;EACA;EACA;;AAEA;EACE;EACA;EACA;EACA;EACA;;AAGE;EACE;EACA","file":"notifications.css"}

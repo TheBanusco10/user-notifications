@@ -1,3 +1,8 @@
+#un__alert .notice {
+  margin: 2rem 1rem 2rem 0;
+  padding: 20px;
+}
+
 #un__notifications {
   display: flex;
   flex-wrap: wrap;
@@ -6,8 +11,11 @@
 #un__notifications .card {
   border-radius: 3px;
   max-width: 17.5rem;
+  display: flex;
+  flex-flow: column;
+  justify-content: space-between;
 }
-#un__notifications .card .un__card-title {
+#un__notifications .card .un__card-content .un__card-title {
   font-size: 20px;
   font-weight: bold;
 }
