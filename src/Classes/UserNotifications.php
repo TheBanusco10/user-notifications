@@ -7,6 +7,7 @@ use UserNotifications\Ajax\Notifications;
 class UserNotifications {
 
 	const DASHBOARD_PAGE_ID = 'toplevel_page_dashboard-user-notifications';
+	const NOTIFICATIONS_PAGE_ID = 'toplevel_page_notifications-user-notifications';
 
 	public static function init() {
 		add_action("init", function () {
@@ -16,6 +17,7 @@ class UserNotifications {
 		add_action("admin_menu", function () {
 			self::userNotifications_registerAdminPage();
 			self::userNotifications_registerNotificationsPage();
+			NotificationController::init();
 		});
 		add_action("admin_enqueue_scripts", function () {
 			ViewsController::userNotifications_registerAdminScripts();

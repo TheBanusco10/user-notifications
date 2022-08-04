@@ -1,25 +1,34 @@
 <?php
+
 $users = get_users( [
 	'exclude' => [ get_current_user_id() ]
 ] );
+
 ?>
 
 <h1>User Notifications - Dashboard</h1>
 
 <div class="un__dashboard">
 
-    <div id="un__alert"></div>
+	<?php include PLUGIN_VIEWS_PATH . 'partials/alert.php' ?>
 
     <section id="un__notification-content">
-        <div>
-            <label for="un__notification-title">Title</label>
-            <input type="text" id="un__notification-title">
-        </div>
+        <form id="un__form">
+            <div>
+                <label for="un__notification-title">Title</label>
+                <input type="text" id="un__notification-title" name="title" required minlength="4" maxlength="50">
+            </div>
 
-        <div>
-            <label for="un__notification-content">Content</label>
-            <textarea id="un__notification-description"></textarea>
-        </div>
+            <div>
+                <label for="un__notification-content">Content</label>
+                <textarea id="un__notification-description" name="content" required minlength="4" maxlength="700"></textarea>
+            </div>
+
+            <div>
+                <button class="button button-disabled" data-button="un__sendNotification">Send notification</button>
+                <div class="spinner"></div>
+            </div>
+        </form>
     </section>
 
     <section id="un__users-wrapper">
@@ -41,10 +50,6 @@ $users = get_users( [
 		    <?php endforeach; ?>
         </section>
     </section>
-
-
-    <button class="button button-disabled" data-button="un__sendNotification">Send notification</button>
-    <div class="spinner">
 </div>
 
 

@@ -17,7 +17,7 @@
 
       label {
         margin-bottom: 1rem;
-        font-size: 25px;
+        font-size: 1.5rem;
       }
 
       input, textarea {
@@ -27,6 +27,12 @@
       textarea {
         min-height: 100px;
         max-height: 250px;
+      }
+
+      label[id*="un__notification"].error {
+        font-size: 1rem;
+        color: red;
+        margin-top: .5rem;
       }
     }
   }
