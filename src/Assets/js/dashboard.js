@@ -9,6 +9,8 @@
 
     let inputs = $('input, textarea, .un__user, button[data-button="un__select-all-users"]');
 
+    let form = $('#un__form');
+
     usersContainer.on('click', function () {
        $(this).toggleClass('active');
        userNotifications_printNumUsersSelected($);
@@ -29,8 +31,27 @@
     });
 
     inputs.on('click focusout keydown keyup', function () {
-        if (userNotifications_isValidToSend($)) sendNotificationButton.removeClass('button-disabled');
+        if (userNotifications_isValidToSend($) && form.valid()) sendNotificationButton.removeClass('button-disabled');
         else sendNotificationButton.addClass('button-disabled');
+    });
+
+    form.validate({
+        rules: {
+            title: {
+                required: true,
+                minlength: 4,
+                maxlength: 50
+            },
+            content: {
+                required: true,
+                minlength: 4,
+                maxlength: 700
+            }
+        }
+    });
+
+    form.on('click', function (evt) {
+       evt.preventDefault();
     });
 
 })(jQuery);
