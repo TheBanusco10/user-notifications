@@ -13,5 +13,8 @@
             "name": "David",
             "email": "davidjimvil@gmail.com"
         }
-    ]
+    ],
+    "require": {
+        "htmlburger/carbon-fields": "^3.3"
+    }
 }

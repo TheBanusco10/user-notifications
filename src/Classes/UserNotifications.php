@@ -2,6 +2,7 @@
 
 namespace UserNotifications\Classes;
 
+use Carbon_Fields\Carbon_Fields;
 use UserNotifications\Ajax\Notifications;
 
 class UserNotifications {
@@ -10,19 +11,26 @@ class UserNotifications {
 	const NOTIFICATIONS_PAGE_ID = 'toplevel_page_notifications-user-notifications';
 
 	public static function init() {
-		add_action("init", function () {
+		add_action( "init", function () {
 			NotificationCPT::init();
 			Notifications::userNotifications_actionAjaxEvents();
-		});
-		add_action("admin_menu", function () {
+		} );
+		add_action( "admin_menu", function () {
 			self::userNotifications_registerAdminPage();
 			self::userNotifications_registerNotificationsPage();
 			NotificationController::init();
-		});
-		add_action("admin_enqueue_scripts", function () {
+		} );
+		add_action( "admin_enqueue_scripts", function () {
 			ViewsController::userNotifications_registerAdminScripts();
 			Notifications::userNotifications_registerAjaxScripts();
-		});
+		} );
+		// Carbon Fields
+		add_action( 'after_setup_theme', function () {
+			Carbon_Fields::boot();
+		} );
+		add_action( 'carbon_fields_register_fields', function () {
+			NotificationCPT::userNotifications_registerNotificationsFields();
+		} );
 	}
 
 	private function userNotifications_registerAdminPage() {
