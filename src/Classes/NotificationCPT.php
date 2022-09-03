@@ -17,17 +17,25 @@ class NotificationCPT {
 		register_post_type( self::POST_TYPE, [
 			'label'       => 'Notifications',
 			'description' => 'Send notifications to users',
-			'public' => true
+			'public'      => true,
+			'supports'    => [ 'title', 'editor', 'excerpt', 'thumbnail' ]
 		] );
 	}
 
 	public static function userNotifications_registerNotificationsFields() {
+		$roles       = wp_roles()->get_names();
+		$rolesOption = [];
+		foreach ( $roles as $role ) {
+			$rolesOption[ strtolower( $role ) ] = $role;
+		}
+
 		Container::make( 'post_meta', 'Users' )
-			->where( 'post_type', '=', self::POST_TYPE )
-			->add_fields( [
-				Field::make( 'multiselect', 'user_roles_select', __( 'Choose roles to send notifications', 'un' ) )
-					->set_options( wp_roles()->get_names() )
-			] );
+		         ->where( 'post_type', '=', self::POST_TYPE )
+		         ->add_fields( [
+			         Field::make( 'multiselect', 'user_roles_select', __( 'Choose roles to send notifications', DOMAIN ) )
+			              ->set_options( $rolesOption ),
+
+		         ] );
 	}
 
 }

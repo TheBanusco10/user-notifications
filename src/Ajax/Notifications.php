@@ -55,12 +55,12 @@ class Notifications {
 			}
 
 			wp_send_json( [
-				'result' => __( 'Notification sent successfully', 'un' )
+				'result' => __( 'Notification sent successfully', DOMAIN )
 			], 200 );
 		}
 
 		wp_send_json( [
-			'result' => __( 'Something was wrong', 'un' )
+			'result' => __( 'Something was wrong', DOMAIN )
 		], 400 );
 
 	}
@@ -72,11 +72,11 @@ class Notifications {
 			wp_delete_post( $notification_id, true );
 
 			wp_send_json( [
-				'result' => __( 'Notification removed', 'un' )
+				'result' => __( 'Notification removed', DOMAIN )
 			], 200 );
 		} else {
 			wp_send_json( [
-				'result' => __( 'Something was wrong', 'un' )
+				'result' => __( 'Something was wrong', DOMAIN )
 			], 400 );
 		}
 

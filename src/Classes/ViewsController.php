@@ -3,12 +3,12 @@
 namespace UserNotifications\Classes;
 
 class ViewsController {
-	public static function userNotifications_adminPageView() {
-		include PLUGIN_PATH . "Views/dashboard.php";
+	public static function userNotifications_adminPageView(): string {
+		return PLUGIN_VIEWS_PATH . "dashboard.php";
 	}
 
-	public static function userNotifications_notificationsPageView() {
-		include PLUGIN_PATH . "Views/notifications.php";
+	public static function userNotifications_displayNotificationsShortcode(): string {
+		return PLUGIN_VIEWS_PATH . "shortcodes/display_notifications.php";
 	}
 
 	public static function userNotifications_registerAdminScripts() {
@@ -19,7 +19,7 @@ class ViewsController {
 
 			wp_enqueue_script( 'un-dashboard-validate', PLUGIN_URL . 'Assets/js/jquery.validate.min.js', [ 'jquery' ], '1.0.0', true );
 			wp_enqueue_script( 'un-dashboard', PLUGIN_URL . 'Assets/js/dashboard.js', [ 'jquery' ], '1.0.0', true );
-		}else if ( $screen->id === UserNotifications::NOTIFICATIONS_PAGE_ID ) {
+		} else if ( $screen->id === UserNotifications::NOTIFICATIONS_PAGE_ID ) {
 			wp_enqueue_style( 'un-notifications-css', PLUGIN_URL . 'Assets/css/notifications.css' );
 		}
 
