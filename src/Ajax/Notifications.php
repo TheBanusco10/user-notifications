@@ -3,7 +3,6 @@
 namespace UserNotifications\Ajax;
 
 use UserNotifications\Classes\NotificationCPT;
-use UserNotifications\Classes\UserNotifications;
 
 class Notifications {
 

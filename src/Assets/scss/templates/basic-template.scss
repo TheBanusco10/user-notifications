@@ -1,0 +1,30 @@
+#un-notifications__basic-template {
+  .un-notification {
+    margin-bottom: 3.2rem;
+
+    .un-notification__image {
+      width: 100%;
+      max-width: 700px;
+    }
+
+    .un-notification__information {
+      border-top: 1px solid rgba(0, 0, 0, .1);
+
+      ul {
+        display: inline-flex;
+        list-style: none;
+        padding: 0;
+
+        li {
+          padding: 0 1.8rem;
+          font-size: .8rem;
+          color: rgba(0, 0, 0, .7);
+
+          &:not(&:last-child) {
+            border-right: 1px solid rgba(0, 0, 0, .3);
+          }
+        }
+      }
+    }
+  }
+}

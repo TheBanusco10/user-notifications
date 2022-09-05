@@ -7,8 +7,8 @@ class ViewsController {
 		return PLUGIN_VIEWS_PATH . "dashboard.php";
 	}
 
-	public static function userNotifications_displayNotificationsShortcode(): string {
-		return PLUGIN_VIEWS_PATH . "shortcodes/display_notifications.php";
+	public static function userNotifications_notificationsTemplate( $templateName ): string {
+		return PLUGIN_VIEWS_PATH . "templates/$templateName.php";
 	}
 
 	public static function userNotifications_registerAdminScripts() {

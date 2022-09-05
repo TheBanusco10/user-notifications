@@ -21,8 +21,10 @@ class NotificationShortcodes {
 			]
 		] );
 
+		$notificationTemplate = carbon_get_theme_option( "un_select_template" );
+
 		ob_start();
-		include ViewsController::userNotifications_displayNotificationsShortcode();
+		include ViewsController::userNotifications_notificationsTemplate( $notificationTemplate );
 
 		return ob_get_clean();
 	}

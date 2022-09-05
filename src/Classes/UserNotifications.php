@@ -27,14 +27,13 @@ class UserNotifications {
 				wp_redirect( get_home_url() );
 			}
 		} );
-//		add_action( "admin_menu", function () {
-//			self::userNotifications_registerAdminPage();
-//			self::userNotifications_registerNotificationsPage();
-//			NotificationController::init();
-//		} );
 		add_action( "admin_enqueue_scripts", function () {
 			ViewsController::userNotifications_registerAdminScripts();
 			Notifications::userNotifications_registerAjaxScripts();
+		} );
+		// Template styles
+		add_action( "wp_enqueue_scripts", function () {
+			NotificationTemplates::init();
 		} );
 
 		// Carbon Fields
@@ -45,31 +44,5 @@ class UserNotifications {
 			NotificationCPT::userNotifications_registerNotificationsFields();
 			NotificationAdmin::init();
 		} );
-	}
-
-	private function userNotifications_registerAdminPage() {
-		add_menu_page(
-			"Dashboard - User Notifications",
-			"Dashboard - User Notifications",
-			"manage_options",
-			"dashboard-user-notifications",
-			function () {
-				ViewsController::userNotifications_adminPageView();
-			},
-			"dashicons-dashboard"
-		);
-	}
-
-	private function userNotifications_registerNotificationsPage() {
-		add_menu_page(
-			"Notifications",
-			"Notifications",
-			"read",
-			"notifications-user-notifications",
-			function () {
-				ViewsController::userNotifications_notificationsPageView();
-			},
-			"dashicons-bell"
-		);
 	}
 }

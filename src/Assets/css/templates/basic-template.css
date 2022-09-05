@@ -1,0 +1,25 @@
+#un-notifications__basic-template .un-notification {
+  margin-bottom: 3.2rem;
+}
+#un-notifications__basic-template .un-notification .un-notification__image {
+  width: 100%;
+  max-width: 700px;
+}
+#un-notifications__basic-template .un-notification .un-notification__information {
+  border-top: 1px solid rgba(0, 0, 0, 0.1);
+}
+#un-notifications__basic-template .un-notification .un-notification__information ul {
+  display: inline-flex;
+  list-style: none;
+  padding: 0;
+}
+#un-notifications__basic-template .un-notification .un-notification__information ul li {
+  padding: 0 1.8rem;
+  font-size: 0.8rem;
+  color: rgba(0, 0, 0, 0.7);
+}
+#un-notifications__basic-template .un-notification .un-notification__information ul li:not(#un-notifications__basic-template .un-notification .un-notification__information ul li:last-child) {
+  border-right: 1px solid rgba(0, 0, 0, 0.3);
+}
+
+/*# sourceMappingURL=basic-template.css.map */

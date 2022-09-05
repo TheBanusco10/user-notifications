@@ -21,6 +21,4 @@ define( 'PLUGIN_PATH', plugin_dir_path( __FILE__ ) . 'src/' );
 define( 'PLUGIN_VIEWS_PATH', plugin_dir_path( __FILE__ ) . 'src/Views/' );
 const DOMAIN = 'un';
 
-const IS_PREMIUM = true;
-
 UserNotifications::init();

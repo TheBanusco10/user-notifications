@@ -18,7 +18,10 @@ class NotificationCPT {
 			'label'       => 'Notifications',
 			'description' => 'Send notifications to users',
 			'public'      => true,
-			'supports'    => [ 'title', 'editor', 'excerpt', 'thumbnail' ]
+			'supports'    => [ 'title', 'editor', 'excerpt', 'thumbnail' ],
+			'rewrite'     => [
+				'slug' => 'notification'
+			]
 		] );
 	}
 
@@ -33,7 +36,8 @@ class NotificationCPT {
 		         ->where( 'post_type', '=', self::POST_TYPE )
 		         ->add_fields( [
 			         Field::make( 'multiselect', 'user_roles_select', __( 'Choose roles to send notifications', DOMAIN ) )
-			              ->set_options( $rolesOption ),
+			              ->set_options( $rolesOption )
+			              ->set_required( true )
 
 		         ] );
 	}

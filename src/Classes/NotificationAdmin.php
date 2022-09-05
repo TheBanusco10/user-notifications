@@ -13,15 +13,13 @@ class NotificationAdmin {
 	function userNotifications_registerAdminPage() {
 		$container = Container::make( 'theme_options', __( 'Notifications Settings', DOMAIN ) );
 
-		if ( IS_PREMIUM ) {
-			$container->add_fields( [
-				Field::make( 'select', 'un_select_template', __( 'Select a template for notifications', DOMAIN ) )
-				     ->set_options( [
-					     'basic'        => __( 'Basic template', DOMAIN ),
-					     'premium_flex' => __( 'Premium Flex template', DOMAIN )
-				     ] )
-			] );
-		}
+		$container->add_fields( [
+			Field::make( 'select', 'un_select_template', __( 'Select a template for notifications', DOMAIN ) )
+			     ->set_options( [
+				     'basic_template' => __( 'Basic template', DOMAIN ),
+				     'flex_template'  => __( 'Flex template', DOMAIN )
+			     ] )
+		] );
 
 	}
 }
