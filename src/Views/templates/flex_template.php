@@ -6,13 +6,15 @@
 					<?php if ( has_post_thumbnail() ): ?>
                         <img class="un-notification__image" src="<?= get_the_post_thumbnail_url() ?>"
                              alt="<?= get_the_post_thumbnail_caption() ?: get_the_title() ?>">
+					<?php else: ?>
+                        <div class="un-notification__image-placeholder"></div>
 					<?php endif; ?>
                     <h3 class="un-notification__title">
 						<?= get_the_title() ?>
                     </h3>
                     <div class="un-notification__content">
                         <p class="un-notification__excerpt">
-							<?= get_the_excerpt() ?>
+							<?= wp_trim_words( get_the_excerpt(), 15 ) ?>
                         </p>
                         <div class="un-notification__information">
                             <ul>
