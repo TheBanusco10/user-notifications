@@ -27,10 +27,10 @@ class UserNotifications {
 				wp_redirect( get_home_url() );
 			}
 		} );
-		add_action( "admin_enqueue_scripts", function () {
-			ViewsController::userNotifications_registerAdminScripts();
-			Notifications::userNotifications_registerAjaxScripts();
-		} );
+//		add_action( "admin_enqueue_scripts", function () {
+//			ViewsController::userNotifications_registerAdminScripts();
+//			Notifications::userNotifications_registerAjaxScripts();
+//		} );
 		// Template styles
 		add_action( "wp_enqueue_scripts", function () {
 			NotificationTemplates::init();
