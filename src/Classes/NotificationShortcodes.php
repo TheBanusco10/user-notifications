@@ -24,7 +24,11 @@ class NotificationShortcodes {
 		$notificationTemplate = carbon_get_theme_option( "un_select_template" );
 
 		ob_start();
-		include ViewsController::userNotifications_notificationsTemplate( $notificationTemplate );
+
+//		include ViewsController::userNotifications_notificationsTemplate( $notificationTemplate );
+		echo TwigLoader::$twig->render( 'test.html.twig', [
+			'posts' => get_posts()
+		] );
 
 		return ob_get_clean();
 	}

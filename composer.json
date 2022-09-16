@@ -15,6 +15,7 @@
         }
     ],
     "require": {
-        "htmlburger/carbon-fields": "^3.3"
+        "htmlburger/carbon-fields": "^3.3",
+        "twig/twig": "^2.15"
     }
 }
