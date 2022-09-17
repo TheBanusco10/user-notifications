@@ -15,7 +15,7 @@ class UserNotifications {
 			NotificationCPT::init();
 			Notifications::userNotifications_actionAjaxEvents();
 			NotificationShortcodes::init();
-			TwigLoader::init();
+			BladeLoader::init();
 		} );
 		add_action( "wp", function () {
 			global $post;

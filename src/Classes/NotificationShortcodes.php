@@ -26,8 +26,11 @@ class NotificationShortcodes {
 		ob_start();
 
 //		include ViewsController::userNotifications_notificationsTemplate( $notificationTemplate );
-		echo TwigLoader::$twig->render( 'test.html.twig', [
-			'posts' => get_posts()
+//		echo TwigLoader::$twig->render( 'test.html.twig', [
+//			'notifications' => $notifications->posts
+//		] );
+		echo BladeLoader::$blade->render( 'test2', [
+			'notifications' => $notifications
 		] );
 
 		return ob_get_clean();
