@@ -1,8 +1,3 @@
-<h1>Testing blade</h1>
-@php
-    var_dump($notifications);
-@endphp
-
 @if ($notifications->have_posts())
     <section id="un-notifications__basic-template">
         @foreach ($notifications->posts as $notification)

@@ -2,13 +2,16 @@
 
 namespace UserNotifications\Classes;
 
+/**
+ * @deprecated It's not necessary for now, just use the name of the template
+ */
 class ViewsController {
 	public static function userNotifications_adminPageView(): string {
 		return PLUGIN_VIEWS_PATH . "dashboard.php";
 	}
 
 	public static function userNotifications_notificationsTemplate( $templateName ): string {
-		return PLUGIN_VIEWS_PATH . "templates/$templateName.php";
+		return "$templateName.blade.php";
 	}
 
 	public static function userNotifications_registerAdminScripts() {
