@@ -4,13 +4,19 @@ namespace UserNotifications\Classes;
 
 class NotificationTemplates {
 
+	private static $instance = false;
+
 	public static function init() {
-		self::userNotifications_registerTemplateStyles();
+		if ( ! self::$instance ) {
+			self::$instance = new self();
+		}
+
+		self::$instance->userNotifications_registerTemplateStyles();
 	}
 
 	function userNotifications_registerTemplateStyles() {
 		$templateSelected = carbon_get_theme_option( "un_select_template" );
-		
+
 		wp_enqueue_style( $templateSelected, PLUGIN_URL . "Assets/css/templates/$templateSelected.css" );
 	}
 }

@@ -4,8 +4,10 @@ namespace UserNotifications\Classes;
 
 class NotificationShortcodes {
 
+	const SHORTCODE_ID = 'un_notifications';
+
 	public static function init() {
-		add_shortcode( "un_notifications", [ self::class, 'userNotifications_showUserNotifications' ] );
+		add_shortcode( self::SHORTCODE_ID, [ self::class, 'userNotifications_showUserNotifications' ] );
 	}
 
 	function userNotifications_showUserNotifications( $atts ) {

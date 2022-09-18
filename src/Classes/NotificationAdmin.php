@@ -6,8 +6,14 @@ use Carbon_Fields\Container;
 use Carbon_Fields\Field\Field;
 
 class NotificationAdmin {
+	private static $instance = false;
+
 	public static function init() {
-		self::userNotifications_registerAdminPage();
+		if ( ! self::$instance ) {
+			self::$instance = new self();
+		}
+
+		self::$instance->userNotifications_registerAdminPage();
 	}
 
 	function userNotifications_registerAdminPage() {

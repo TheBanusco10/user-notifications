@@ -7,10 +7,16 @@ use Carbon_Fields\Field\Field;
 
 class NotificationCPT {
 
+	private static $instance = false;
+
 	const POST_TYPE = 'un_notification';
 
 	public static function init() {
-		self::userNotifications_registerNotificationCPT();
+		if ( ! self::$instance ) {
+			self::$instance = new self();
+		}
+
+		self::$instance->userNotifications_registerNotificationCPT();
 	}
 
 	private function userNotifications_registerNotificationCPT() {

@@ -7,9 +7,6 @@ use UserNotifications\Ajax\Notifications;
 
 class UserNotifications {
 
-	const DASHBOARD_PAGE_ID = 'toplevel_page_dashboard-user-notifications';
-	const NOTIFICATIONS_PAGE_ID = 'toplevel_page_notifications-user-notifications';
-
 	public static function init() {
 		add_action( "init", function () {
 			NotificationCPT::init();
@@ -17,21 +14,18 @@ class UserNotifications {
 			NotificationShortcodes::init();
 			BladeLoader::init();
 		} );
+
+		// If user is not logged in, return to home page
 		add_action( "wp", function () {
 			global $post;
-			global $wp_query;
 
-			$user         = wp_get_current_user();
-			$rolesAllowed = carbon_get_post_meta( $post->ID, 'user_roles_select' );
+			$user = wp_get_current_user();
 
-			if ( ! in_array( 'administrator', $user->roles ) && $wp_query->query['post_type'] === NotificationCPT::POST_TYPE && ! $wp_query->is_admin && empty( array_intersect( $user->roles, $rolesAllowed ) ) ) {
+			if ( $user->ID === 0 && has_shortcode( $post->post_content, NotificationShortcodes::SHORTCODE_ID ) ) {
 				wp_redirect( get_home_url() );
 			}
 		} );
-//		add_action( "admin_enqueue_scripts", function () {
-//			ViewsController::userNotifications_registerAdminScripts();
-//			Notifications::userNotifications_registerAjaxScripts();
-//		} );
+
 		// Template styles
 		add_action( "wp_enqueue_scripts", function () {
 			NotificationTemplates::init();
