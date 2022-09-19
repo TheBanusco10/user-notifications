@@ -10,7 +10,6 @@ class UserNotifications {
 	public static function init() {
 		add_action( "init", function () {
 			NotificationCPT::init();
-			Notifications::userNotifications_actionAjaxEvents();
 			NotificationShortcodes::init();
 			BladeLoader::init();
 		} );
