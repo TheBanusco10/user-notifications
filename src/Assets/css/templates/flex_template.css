@@ -1,0 +1,77 @@
+#un-notifications__flex-template {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 2rem;
+  justify-content: center;
+}
+#un-notifications__flex-template .un-notification {
+  max-width: 25rem;
+  height: 18rem;
+  overflow: hidden;
+  position: relative;
+  color: white;
+  text-align: center;
+}
+#un-notifications__flex-template .un-notification:hover .un-notification__title {
+  transform: translate(0, -20%);
+}
+#un-notifications__flex-template .un-notification:hover .un-notification__content {
+  bottom: 0;
+}
+#un-notifications__flex-template .un-notification .un-notification__image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  filter: brightness(0.6);
+}
+#un-notifications__flex-template .un-notification .un-notification__image-placeholder {
+  width: 25rem;
+  height: 18rem;
+  background: #606c88;
+  background: -webkit-linear-gradient(to top, #3f4c6b, #606c88);
+  background: linear-gradient(to top, #3f4c6b, #606c88);
+}
+#un-notifications__flex-template .un-notification .un-notification__title, #un-notifications__flex-template .un-notification .un-notification__content {
+  width: 100%;
+  color: white;
+  transition: all 0.3s;
+}
+#un-notifications__flex-template .un-notification .un-notification__title {
+  position: absolute;
+  top: 0;
+  transform: translate(0, 50%);
+}
+#un-notifications__flex-template .un-notification .un-notification__content {
+  position: absolute;
+  bottom: -70%;
+  padding: 0 0.6rem;
+}
+#un-notifications__flex-template .un-notification .un-notification__content .un-notification__excerpt {
+  padding: 0 0.6rem;
+}
+#un-notifications__flex-template .un-notification .un-notification__content .un-notification__information {
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+#un-notifications__flex-template .un-notification .un-notification__content .un-notification__information ul {
+  display: inline-flex;
+  list-style: none;
+  padding: 0;
+}
+#un-notifications__flex-template .un-notification .un-notification__content .un-notification__information ul li {
+  padding: 0 1.8rem;
+  font-size: 0.8rem;
+  font-style: italic;
+}
+#un-notifications__flex-template .un-notification .un-notification__content .un-notification__information ul li:not(#un-notifications__flex-template .un-notification .un-notification__content .un-notification__information ul li:last-child) {
+  border-right: 1px solid rgba(255, 255, 255, 0.3);
+}
+@media (max-width: 768px) {
+  #un-notifications__flex-template .un-notification .un-notification__title {
+    transform: translate(0, -20%);
+  }
+  #un-notifications__flex-template .un-notification .un-notification__content {
+    bottom: 0;
+  }
+}
+
+/*# sourceMappingURL=flex_template.css.map */

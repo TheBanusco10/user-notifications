@@ -13,5 +13,12 @@
             "name": "David",
             "email": "davidjimvil@gmail.com"
         }
-    ]
+    ],
+    "require": {
+        "htmlburger/carbon-fields": "^3.3",
+        "jenssegers/blade": "^1.4"
+    },
+    "config": {
+        "platform-check": false
+    }
 }
