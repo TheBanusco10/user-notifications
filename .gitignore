@@ -1,5 +1,6 @@
 .idea/
 vendor/
 src/Views/cache/*
+!src/Views/cache/.gitkeep
 
 user-notifications.iml
