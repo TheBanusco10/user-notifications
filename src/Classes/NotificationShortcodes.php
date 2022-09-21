@@ -27,9 +27,13 @@ class NotificationShortcodes {
 
 		ob_start();
 
-		echo BladeLoader::$blade->render( $notificationTemplate, [
-			'notifications' => $notifications
-		] );
+		if ( is_user_logged_in() ) {
+			echo BladeLoader::$blade->render( $notificationTemplate, [
+				'notifications' => $notifications
+			] );
+		} else {
+			_e( 'Please, log in to see your notifications', DOMAIN );
+		}
 
 		return ob_get_clean();
 	}

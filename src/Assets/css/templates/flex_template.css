@@ -13,10 +13,14 @@
   text-align: center;
 }
 #un-notifications__flex-template .un-notification:hover .un-notification__title {
-  transform: translate(0, -20%);
+  transform: translate(0, -50%);
 }
 #un-notifications__flex-template .un-notification:hover .un-notification__content {
   bottom: 0;
+}
+#un-notifications__flex-template .un-notification a {
+  display: flex;
+  align-items: center;
 }
 #un-notifications__flex-template .un-notification .un-notification__image {
   width: 100%;
@@ -38,8 +42,7 @@
 }
 #un-notifications__flex-template .un-notification .un-notification__title {
   position: absolute;
-  top: 0;
-  transform: translate(0, 50%);
+  transform: translate(0, 0);
 }
 #un-notifications__flex-template .un-notification .un-notification__content {
   position: absolute;

@@ -15,12 +15,17 @@
 
     &:hover {
       .un-notification__title {
-        transform: translate(0, -20%);
+        transform: translate(0, -50%);
       }
 
       .un-notification__content {
         bottom: 0;
       }
+    }
+
+    a {
+      display: flex;
+      align-items: center;
     }
 
     .un-notification__image {
@@ -48,8 +53,7 @@
 
     .un-notification__title {
       position: absolute;
-      top: 0;
-      transform: translate(0, 50%);
+      transform: translate(0, 0);
     }
 
     .un-notification__content {
