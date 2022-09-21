@@ -1,5 +1,7 @@
 .idea/
+node_modules/
 vendor/
+dist/
 src/Views/cache/*
 !src/Views/cache/.gitkeep
 
