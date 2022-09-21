@@ -6,7 +6,7 @@ const {performance} = require('perf_hooks');
 const destPath = './dist/usernotifications.zip';
 const provisionalPath = 'provisional/';
 
-const files = ['composer.json', 'composer.lock', 'package.json', 'package-lock.json', 'user-notifications.php', 'README.md'];
+const files = ['composer.json', 'composer.lock', 'user-notifications.php', 'README.md'];
 const folders = ['vendor', 'src'];
 
 const createBuild = () => {
@@ -27,7 +27,7 @@ const createBuild = () => {
 
     let endTime = performance.now();
 
-    console.log(`Files copied in ${((endTime - startTime) / 1000).toFixed(2)} milliseconds`);
+    console.log(`Files copied in ${((endTime - startTime) / 1000).toFixed(2)} seconds`);
 
     console.log('Creating zip for plugin...');
 
@@ -41,7 +41,7 @@ const createBuild = () => {
         console.log('archiver has been finalized and the output file descriptor has closed.');
         endTime = performance.now();
 
-        console.log(`Zip created in ${((endTime - startTime) / 1000).toFixed(2)} milliseconds`);
+        console.log(`Zip created in ${((endTime - startTime) / 1000).toFixed(2)} seconds`);
         fs.rmSync(provisionalPath, {recursive: true, force: true});
     });
 
