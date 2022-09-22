@@ -12,7 +12,9 @@ class UserNotifications {
 			NotificationShortcodes::init();
 			BladeLoader::init();
 		} );
-
+		add_action( 'admin_menu', function () {
+			NotificationAdmin::registerMainAdminPage();
+		} );
 		// If user is not logged in, return to home page
 //		add_action( "wp", function () {
 //			global $post;
