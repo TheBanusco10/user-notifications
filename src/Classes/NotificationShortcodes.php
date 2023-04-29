@@ -9,7 +9,9 @@ class NotificationShortcodes
 
 	public static function init()
 	{
-		add_shortcode(self::SHORTCODE_ID, [self::class, 'showUserNotifications']);
+		$obj = new self();
+
+		add_shortcode(self::SHORTCODE_ID, [$obj, 'showUserNotifications']);
 	}
 
 	function showUserNotifications($atts)
@@ -30,9 +32,13 @@ class NotificationShortcodes
 
 		ob_start();
 
-		echo BladeLoader::$blade->render($notificationTemplate, [
-			'notifications' => $notifications
-		]);
+		if (!is_user_logged_in()) {
+			_e('You must be logged in order to see notifications', DOMAIN);
+		} else {
+			echo BladeLoader::$blade->render($notificationTemplate, [
+				'notifications' => $notifications,
+			]);
+		}
 
 		return ob_get_clean();
 	}
