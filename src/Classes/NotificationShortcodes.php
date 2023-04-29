@@ -2,18 +2,21 @@
 
 namespace UserNotifications\Classes;
 
-class NotificationShortcodes {
+class NotificationShortcodes
+{
 
 	const SHORTCODE_ID = 'un_notifications';
 
-	public static function init() {
-		add_shortcode( self::SHORTCODE_ID, [ self::class, 'userNotifications_showUserNotifications' ] );
+	public static function init()
+	{
+		add_shortcode(self::SHORTCODE_ID, [self::class, 'showUserNotifications']);
 	}
 
-	function userNotifications_showUserNotifications( $atts ) {
+	function showUserNotifications($atts)
+	{
 		$user = wp_get_current_user();
 
-		$notifications = new \WP_Query( [
+		$notifications = new \WP_Query([
 			'post_type'  => 'un_notification',
 			'meta_query' => [
 				[
@@ -21,17 +24,16 @@ class NotificationShortcodes {
 					'value' => $user->roles,
 				]
 			]
-		] );
+		]);
 
-		$notificationTemplate = carbon_get_theme_option( "un_select_template" );
+		$notificationTemplate = carbon_get_theme_option("un_select_template");
 
 		ob_start();
 
-		echo BladeLoader::$blade->render( $notificationTemplate, [
+		echo BladeLoader::$blade->render($notificationTemplate, [
 			'notifications' => $notifications
-		] );
+		]);
 
 		return ob_get_clean();
 	}
-
 }

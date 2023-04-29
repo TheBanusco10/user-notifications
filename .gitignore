@@ -4,5 +4,6 @@ vendor/
 dist/
 src/Views/cache/*
 !src/Views/cache/.gitkeep
+.DS_Store
 
 user-notifications.iml
