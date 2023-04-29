@@ -16,7 +16,7 @@ class UserNotifications
 		});
 
 		// TODO render "No permissions" text when user does not have permissions to see the Notification post
-		// add_filter('the_content');
+		add_filter('the_content', fn ($content) => NotificationCPT::showNotificationContent($content));
 
 		// Template styles
 		add_action("wp_enqueue_scripts", function () {

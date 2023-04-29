@@ -51,4 +51,15 @@ class NotificationCPT
 					->set_required(true)
 			]);
 	}
+
+	public static function showNotificationContent($content)
+	{
+		global $post;
+
+		if (!is_user_logged_in() && $post->post_type === NotificationCPT::POST_TYPE) {
+			wp_safe_redirect(home_url());
+		}
+
+		return $content;
+	}
 }
